@@ -1,220 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Services - Customer Satisfaction Survey</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arche IT Services - NPS Survey</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
 
-    .container {
-      width: 70%;
-      max-width: 800px;
-      margin: 40px auto;
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 10px;
-      padding: 40px 50px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
+.container {
+  width: 70%;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 40px 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
-    .container img {
-      display: block;
-      margin: 0 auto 30px;
-      max-width: 240px;
-    }
+.container img {
+  display: block;
+  margin: 0 auto 30px;
+  max-width: 240px;
+}
 
-    h1 {
-      text-align: center;
-      color: #000;
-      margin-bottom: 8px;
-      font-size: 1.8rem;
-      letter-spacing: .5px;
-    }
+h1 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 8px;
+  font-size: 1.8rem;
+  letter-spacing: .5px;
+}
 
-    p.subtitle {
-      text-align: center;
-      color: #555;
-      margin-bottom: 30px;
-    }
+p.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 30px;
+}
 
-    .question {
-      padding-bottom: 25px;
-      margin-bottom: 25px;
-      border-bottom: 1px solid rgba(0,0,0,0.15);
-    }
+.question {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
 
-    .question:last-of-type {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
+label {
+  display: block;
+  margin: 6px 0;
+  color: #333;
+  font-size: .95rem;
+}
 
-    label {
-      display: block;
-      margin: 6px 0;
-      color: #333;
-      font-size: .95rem;
-    }
+textarea, input[type="text"], input[type="email"] {
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
+  padding: 8px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
+input[type="text"], input[type="email"] {height: 40px;}
 
-    textarea {
-      width: 100%;
-      height: 60px;
-      margin-top: 10px;
-      padding: 8px;
-      font-family: inherit;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      resize: vertical;
-    }
+textarea:focus, input:focus {
+  border-color: #000;
+  outline: none;
+}
 
-    textarea:focus {
-      border-color: #000;
-      outline: none;
-    }
+/* NPS Row Styling */
+#nps-options {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #000;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
 
-    input[type="radio"] {
-      margin-right: 6px;
-    }
+#nps-options label {
+  padding: 6px 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-    .nps-grid label {
-      cursor: pointer;
-      padding: 6px 12px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      margin: 2px;
-      display: inline-block;
-    }
+#nps-options label.selected {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
 
-    button {
-      display: block;
-      margin: 30px auto 0;
-      padding: 12px 28px;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: 0.25s;
-    }
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 28px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.25s;
+}
 
-    button:hover {
-      background-color: #333;
-    }
-
-    .footer-text {
-      text-align: center;
-      margin-top: 25px;
-      color: #555;
-      font-size: .95rem;
-    }
-  </style>
+button:hover {
+  background-color: #333;
+}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <img src="Arche_Logo_Black_1024x231.png" alt="Arche Logo">
-    <h1>Customer Satisfaction Survey</h1>
-    <p class="subtitle">Help us improve our IT services — your feedback matters!</p>
+<div class="container">
 
-    <!-- NPS Section -->
-    <div class="question">
-      <label>On a scale of 0–10, how likely are you to recommend our IT services?</label>
+<img src="Arche_Logo_Black_1024x231.png" alt="Arche Logo">
 
-      <div class="nps-grid">
-        <script>
-          for(let i=0;i<=10;i++){
-            document.write(`
-              <label>
-                <input type="radio" name="nps" value="${i}"> ${i}
-              </label>
-            `);
-          }
-        </script>
-      </div>
+<h1>Customer Satisfaction Survey</h1>
+<p class="subtitle">Help us improve our IT services — your feedback matters.</p>
 
-      <p style="font-size:0.9rem; margin-top:8px; color:#444;">
-        <strong>NPS Scale:</strong><br>
-        0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> &nbsp; | &nbsp;
-        8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> &nbsp; | &nbsp;
-        9–10 = <span style="color:#5cb85c;font-weight:bold;">Promoter</span>
-      </p>
-    </div>
+<!-- Name & Email -->
+<div class="question">
+<label>Your Name*</label>
+<input type="text" id="name" placeholder="Enter your name">
 
-    <!-- Q1 -->
-    <div class="question">
-      <label>1. How satisfied are you with the quality and reliability of our IT services?</label>
-      <label><input type="radio" name="q1"> Very Satisfied</label>
-      <label><input type="radio" name="q1"> Satisfied</label>
-      <label><input type="radio" name="q1"> Neutral</label>
-      <label><input type="radio" name="q1"> Dissatisfied</label>
-      <label><input type="radio" name="q1"> Very Dissatisfied</label>
-      <textarea placeholder="Your comments..."></textarea>
-    </div>
+<label>Your Email*</label>
+<input type="email" id="email" placeholder="Enter your email">
+</div>
 
-    <!-- Q2 -->
-    <div class="question">
-      <label>2. How would you rate our team's response time and ability to resolve your IT issues?</label>
-      <label><input type="radio" name="q2"> Excellent</label>
-      <label><input type="radio" name="q2"> Good</label>
-      <label><input type="radio" name="q2"> Average</label>
-      <label><input type="radio" name="q2"> Poor</label>
-      <label><input type="radio" name="q2"> Very Poor</label>
-      <textarea placeholder="Your comments..."></textarea>
-    </div>
+<!-- NPS Score -->
+<div class="question">
+<label>How likely are you to recommend our IT services? (0–10)</label>
 
-    <!-- Q3 -->
-    <div class="question">
-      <label>3. How confident are you in the technical expertise of our IT support team?</label>
-      <label><input type="radio" name="q3"> Extremely Confident</label>
-      <label><input type="radio" name="q3"> Very Confident</label>
-      <label><input type="radio" name="q3"> Somewhat Confident</label>
-      <label><input type="radio" name="q3"> Not Very Confident</label>
-      <label><input type="radio" name="q3"> Not Confident at All</label>
-      <textarea placeholder="Your comments..."></textarea>
-    </div>
+<div id="nps-options">
+  <label><input type="radio" name="nps" value="0" style="display:none"> 0</label>
+  <label><input type="radio" name="nps" value="1" style="display:none"> 1</label>
+  <label><input type="radio" name="nps" value="2" style="display:none"> 2</label>
+  <label><input type="radio" name="nps" value="3" style="display:none"> 3</label>
+  <label><input type="radio" name="nps" value="4" style="display:none"> 4</label>
+  <label><input type="radio" name="nps" value="5" style="display:none"> 5</label>
+  <label><input type="radio" name="nps" value="6" style="display:none"> 6</label>
+  <label><input type="radio" name="nps" value="7" style="display:none"> 7</label>
+  <label><input type="radio" name="nps" value="8" style="display:none"> 8</label>
+  <label><input type="radio" name="nps" value="9" style="display:none"> 9</label>
+  <label><input type="radio" name="nps" value="10" style="display:none"> 10</label>
+</div>
 
-    <!-- Q4 -->
-    <div class="question">
-      <label>4. How effective is our communication regarding service updates, maintenance, and issue status?</label>
-      <label><input type="radio" name="q4"> Very Effective</label>
-      <label><input type="radio" name="q4"> Effective</label>
-      <label><input type="radio" name="q4"> Neutral</label>
-      <label><input type="radio" name="q4"> Ineffective</label>
-      <label><input type="radio" name="q4"> Very Ineffective</label>
-      <textarea placeholder="Your comments..."></textarea>
-    </div>
+<p style="font-size:0.9rem;margin-top:8px;">
+<b>NPS Scale:</b><br>
+0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> | 
+8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> | 
+9–10 = <span style="color:#5cb85c;font-weight:bold;">Promoter</span>
+</p>
+</div>
 
-    <!-- Q5 -->
-    <div class="question">
-      <label>5. What is the primary reason for your score? What do we do well, and where should we improve?</label>
-      <textarea placeholder="Share your thoughts..."></textarea>
-    </div>
+<!-- Questions -->
+<div class="question">
+<label>What do we do well?</label>
+<textarea id="q1"></textarea>
+</div>
 
-    <button onclick="submitForm()">Submit Feedback</button>
+<div class="question">
+<label>Where can we improve?</label>
+<textarea id="q2"></textarea>
+</div>
 
-    <p class="footer-text">
-      Thank you for taking the time to complete this survey!<br>
-      Your feedback helps us continuously improve our IT services.
-    </p>
-  </div>
+<button onclick="submitForm()">Submit Feedback</button>
+
+</div>
 
 <script>
-function submitForm() {
-  const nps = document.querySelector('input[name="nps"]:checked');
-  if (!nps) {
-    alert("Please select an NPS score.");
-    return;
-  }
+// highlight selected NPS rating
+const labels = document.querySelectorAll('#nps-options label');
+labels.forEach(label => {
+label.onclick = () => {
+labels.forEach(l => l.classList.remove('selected'));
+label.classList.add('selected');
+label.querySelector("input").checked = true;
+};
+});
 
-  alert("✅ Thank you! Your response has been submitted.");
+function submitForm() {
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let nps = document.querySelector('input[name="nps"]:checked');
+
+if (!name || !email || !nps) {
+alert("⚠️ Please fill your name, email, and select a rating.");
+return;
+}
+
+alert("✅ Thank you! Your response has been submitted.");
 }
 </script>
 
