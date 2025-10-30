@@ -68,7 +68,6 @@ textarea, input[type="text"], input[type="email"] {
   resize: vertical;
 }
 input[type="text"], input[type="email"] {height: 40px;}
-
 textarea:focus, input:focus {
   border-color: #000;
   outline: none;
@@ -89,7 +88,6 @@ textarea:focus, input:focus {
   border-radius: 6px;
   cursor: pointer;
 }
-
 #nps-options label.selected {
   background-color: #000;
   color: #fff;
@@ -123,6 +121,7 @@ button:hover {
 <h1>Customer Satisfaction Survey</h1>
 <p class="subtitle">Help us improve our IT services — your feedback matters.</p>
 
+<!-- Name & Email -->
 <div class="question">
 <label>Your Name*</label>
 <input type="text" id="name" placeholder="Enter your name">
@@ -131,43 +130,59 @@ button:hover {
 <input type="email" id="email" placeholder="Enter your email">
 </div>
 
+<!-- NPS -->
 <div class="question">
 <label>How likely are you to recommend our IT services? (0–10)</label>
 
 <div id="nps-options">
-  <label><input type="radio" name="nps" value="0" style="display:none"> 0</label>
-  <label><input type="radio" name="nps" value="1" style="display:none"> 1</label>
-  <label><input type="radio" name="nps" value="2" style="display:none"> 2</label>
-  <label><input type="radio" name="nps" value="3" style="display:none"> 3</label>
-  <label><input type="radio" name="nps" value="4" style="display:none"> 4</label>
-  <label><input type="radio" name="nps" value="5" style="display:none"> 5</label>
-  <label><input type="radio" name="nps" value="6" style="display:none"> 6</label>
-  <label><input type="radio" name="nps" value="7" style="display:none"> 7</label>
-  <label><input type="radio" name="nps" value="8" style="display:none"> 8</label>
-  <label><input type="radio" name="nps" value="9" style="display:none"> 9</label>
-  <label><input type="radio" name="nps" value="10" style="display:none"> 10</label>
+  <label><input type="radio" name="nps" value="0" style="display:none">0</label>
+  <label><input type="radio" name="nps" value="1" style="display:none">1</label>
+  <label><input type="radio" name="nps" value="2" style="display:none">2</label>
+  <label><input type="radio" name="nps" value="3" style="display:none">3</label>
+  <label><input type="radio" name="nps" value="4" style="display:none">4</label>
+  <label><input type="radio" name="nps" value="5" style="display:none">5</label>
+  <label><input type="radio" name="nps" value="6" style="display:none">6</label>
+  <label><input type="radio" name="nps" value="7" style="display:none">7</label>
+  <label><input type="radio" name="nps" value="8" style="display:none">8</label>
+  <label><input type="radio" name="nps" value="9" style="display:none">9</label>
+  <label><input type="radio" name="nps" value="10" style="display:none">10</label>
 </div>
 
 <p style="font-size:0.9rem;margin-top:8px;">
 <b>NPS Scale:</b><br>
-0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> | 
-8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> | 
+0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> &nbsp;|&nbsp;
+8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> &nbsp;|&nbsp;
 9–10 = <span style="color:#5cb85c;font-weight:bold;">Promoter</span>
 </p>
 </div>
 
+<!-- Survey questions -->
 <div class="question">
-<label>What do we do well?</label>
+<label>How satisfied are you with the quality & reliability of our IT services?</label>
 <textarea id="q1"></textarea>
 </div>
 
 <div class="question">
-<label>Where can we improve?</label>
+<label>How would you rate our team's response time & issue resolution?</label>
 <textarea id="q2"></textarea>
 </div>
 
-<button onclick="submitForm()">Submit Feedback</button>
+<div class="question">
+<label>How confident are you in our technical expertise?</label>
+<textarea id="q3"></textarea>
+</div>
 
+<div class="question">
+<label>How effective is our communication on updates & issues?</label>
+<textarea id="q4"></textarea>
+</div>
+
+<div class="question">
+<label>What do we do well, and where should we improve?</label>
+<textarea id="q5"></textarea>
+</div>
+
+<button onclick="submitForm()">Submit Feedback</button>
 </div>
 
 <script>
@@ -187,12 +202,15 @@ let data = {
   email: document.getElementById("email").value,
   nps: document.querySelector('input[name="nps"]:checked')?.value,
   q1: document.getElementById("q1").value,
-  q2: document.getElementById("q2").value
+  q2: document.getElementById("q2").value,
+  q3: document.getElementById("q3").value,
+  q4: document.getElementById("q4").value,
+  q5: document.getElementById("q5").value
 };
 
 if (!data.name || !data.email || !data.nps) {
-alert("⚠️ Please fill your name, email, and score.");
-return;
+  alert("⚠️ Please fill your name, email, and select a rating.");
+  return;
 }
 
 // ✅ SEND TO GOOGLE SHEETS
