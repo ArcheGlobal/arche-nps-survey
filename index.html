@@ -26,8 +26,8 @@
 
     .container img {
       display: block;
-      margin: 0 auto 20px;
-      max-width: 220px;
+      margin: 0 auto 30px;
+      max-width: 240px;
     }
 
     h1 {
@@ -83,9 +83,13 @@
       margin-right: 6px;
     }
 
-    input[type="range"] {
-      width: 100%;
-      margin: 10px 0;
+    .nps-grid label {
+      cursor: pointer;
+      padding: 6px 12px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      margin: 2px;
+      display: inline-block;
     }
 
     button {
@@ -120,12 +124,28 @@
     <h1>Customer Satisfaction Survey</h1>
     <p class="subtitle">Help us improve our IT services — your feedback matters!</p>
 
-    <!-- NPS -->
+    <!-- NPS Section -->
     <div class="question">
       <label>On a scale of 0–10, how likely are you to recommend our IT services?</label>
-      <small>Not at all likely</small>
-      <input type="range" min="0" max="10" step="1">
-      <small style="float: right">Extremely likely</small>
+
+      <div class="nps-grid">
+        <script>
+          for(let i=0;i<=10;i++){
+            document.write(`
+              <label>
+                <input type="radio" name="nps" value="${i}"> ${i}
+              </label>
+            `);
+          }
+        </script>
+      </div>
+
+      <p style="font-size:0.9rem; margin-top:8px; color:#444;">
+        <strong>NPS Scale:</strong><br>
+        0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> &nbsp; | &nbsp;
+        8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> &nbsp; | &nbsp;
+        9–10 = <span style="color:#5cb85c;font-weight:bold;">Promoter</span>
+      </p>
     </div>
 
     <!-- Q1 -->
@@ -178,12 +198,25 @@
       <textarea placeholder="Share your thoughts..."></textarea>
     </div>
 
-    <button>Submit Feedback</button>
+    <button onclick="submitForm()">Submit Feedback</button>
 
     <p class="footer-text">
       Thank you for taking the time to complete this survey!<br>
       Your feedback helps us continuously improve our IT services.
     </p>
   </div>
+
+<script>
+function submitForm() {
+  const nps = document.querySelector('input[name="nps"]:checked');
+  if (!nps) {
+    alert("Please select an NPS score.");
+    return;
+  }
+
+  alert("✅ Thank you! Your response has been submitted.");
+}
+</script>
+
 </body>
 </html>
