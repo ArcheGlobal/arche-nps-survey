@@ -74,7 +74,6 @@ textarea:focus, input:focus {
   outline: none;
 }
 
-/* NPS Row Styling */
 #nps-options {
   display: flex;
   justify-content: space-between;
@@ -124,7 +123,6 @@ button:hover {
 <h1>Customer Satisfaction Survey</h1>
 <p class="subtitle">Help us improve our IT services — your feedback matters.</p>
 
-<!-- Name & Email -->
 <div class="question">
 <label>Your Name*</label>
 <input type="text" id="name" placeholder="Enter your name">
@@ -133,7 +131,6 @@ button:hover {
 <input type="email" id="email" placeholder="Enter your email">
 </div>
 
-<!-- NPS Score -->
 <div class="question">
 <label>How likely are you to recommend our IT services? (0–10)</label>
 
@@ -159,7 +156,6 @@ button:hover {
 </p>
 </div>
 
-<!-- Questions -->
 <div class="question">
 <label>What do we do well?</label>
 <textarea id="q1"></textarea>
@@ -175,7 +171,7 @@ button:hover {
 </div>
 
 <script>
-// highlight selected NPS rating
+// highlight selected NPS score
 const labels = document.querySelectorAll('#nps-options label');
 labels.forEach(label => {
 label.onclick = () => {
@@ -186,14 +182,25 @@ label.querySelector("input").checked = true;
 });
 
 function submitForm() {
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let nps = document.querySelector('input[name="nps"]:checked');
+let data = {
+  name: document.getElementById("name").value,
+  email: document.getElementById("email").value,
+  nps: document.querySelector('input[name="nps"]:checked')?.value,
+  q1: document.getElementById("q1").value,
+  q2: document.getElementById("q2").value
+};
 
-if (!name || !email || !nps) {
-alert("⚠️ Please fill your name, email, and select a rating.");
+if (!data.name || !data.email || !data.nps) {
+alert("⚠️ Please fill your name, email, and score.");
 return;
 }
+
+// ✅ SEND TO GOOGLE SHEETS
+fetch("https://script.google.com/macros/s/AKfycbx9mCmvXSRrtwyV98VUAvF2TB_5DqJfvCNV4LHGR1_YnS2oc5TZjYB0GIbq9XrObLOokw/exec", {
+method: "POST",
+mode: "no-cors",
+body: JSON.stringify(data)
+});
 
 alert("✅ Thank you! Your response has been submitted.");
 }
