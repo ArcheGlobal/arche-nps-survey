@@ -3,128 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arche IT Services - NPS Survey</title>
+<title>Arche - Net Promoter Score Survey</title>
 
 <style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:#f5f5f5;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
 }
 
-/* Container */
 .container {
-  width: 70%;
-  max-width: 800px;
-  margin: 40px auto;
-  background-color: #ffffff;
-  border: 2px solid #000000;
-  border-radius: 12px;
-  padding: 40px 50px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  width:100%;
+  max-width:720px;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 22px rgba(0,0,0,0.08);
 }
 
-/* Logo */
-.container img {
-  display: block;
-  margin: 0 auto 30px;
-  max-width: 240px;
+/* Header */
+.header {
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:42px 28px;
 }
 
-/* Title */
-h1 {
-  text-align: center;
-  color: #000;
-  margin-bottom: 6px;
-  font-size: 1.9rem;
-  font-weight: 700;
+.logo {
+  max-width:180px;
+  margin-bottom:8px;
 }
 
-p.subtitle {
-  text-align: center;
-  color: #444;
-  margin-bottom: 30px;
-  font-size: 1rem;
+/* Form Body */
+.form-content {
+  padding:50px 40px;
 }
 
-/* Question block */
-.question {
-  padding-bottom: 20px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
+.label-title {
+  font-size:22px;
+  font-weight:700;
+  color:#2d3748;
+  text-align:center;
+  margin-bottom:30px;
 }
 
-label {
-  display: block;
-  margin: 6px 0;
-  color: #222;
-  font-size: .95rem;
-  font-weight: 600;
+/* NPS */
+.nps-scale-container {margin:32px 0;}
+.nps-scale {
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.nps-btn {
+  width:48px;
+  height:48px;
+  background:#fff;
+  border:2px solid #d2d6dc;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
+}
+
+.nps-btn:hover {
+  background:#f7fafc;
+  border-color:#000;
+  transform:scale(1.08);
+}
+.nps-btn.selected {
+  background:#000;
+  color:#fff;
+  border-color:#000;
+  transform:scale(1.1);
 }
 
 /* Inputs */
-textarea, input[type="text"], input[type="email"] {
-  width: 100%;
-  height: 60px;
-  margin-top: 8px;
-  padding: 8px;
-  font-family: inherit;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  resize: vertical;
+.input-group {
+  margin-top:22px;
 }
-input[type="text"], input[type="email"] {height: 40px;}
-
-textarea:focus, input:focus {
-  border-color: #000;
-  outline: none;
+input, textarea {
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  border:2px solid #e2e8f0;
+  border-radius:8px;
+  margin-top:8px;
 }
-
-/* NPS buttons */
-#nps-options {
-  display: flex;
-  justify-content: space-between;
-  border: 2px solid #000;
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 10px;
+input:focus, textarea:focus {
+  border-color:#000;
+  outline:none;
+}
+textarea {
+  height:100px;
+  resize:vertical;
 }
 
-#nps-options label {
-  padding: 6px 10px;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  cursor: pointer;
-  min-width: 26px;
-  text-align: center;
-  font-weight: bold;
-}
-
-#nps-options label.selected {
-  background-color: #000;
-  color: #fff;
-  border-color: #000;
-}
-
-/* Submit Button */
+/* Submit */
 button {
-  display: block;
-  margin: 30px auto 0;
-  padding: 12px 30px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: .5px;
-  transition: 0.25s;
+  width:100%;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:18px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:35px;
+  transition:.2s;
+}
+button:disabled {
+  background:#bfc5d2;
+  cursor:not-allowed;
+}
+button:hover:not(:disabled) {
+  background:#222;
 }
 
-button:hover {
-  background-color: #222;
+/* Footer */
+.footer {
+  text-align:center;
+  padding:20px;
+  background:#fafafa;
+  font-size:14px;
+  color:#6b7280;
+  border-top:1px solid #ececec;
 }
 </style>
 </head>
@@ -132,112 +147,108 @@ button:hover {
 <body>
 <div class="container">
 
-<img src="Arche_Logo_Black_1024x231.png" alt="Arche Logo">
-
-<h1>Customer Satisfaction Survey</h1>
-<p class="subtitle">Help us improve our IT services — your feedback matters.</p>
-
-<!-- Name & Email -->
-<div class="question">
-<label>Your Name*</label>
-<input type="text" id="name" placeholder="Enter your name">
-
-<label>Your Email*</label>
-<input type="email" id="email" placeholder="Enter your email">
+<div class="header">
+<img src="Arche_Logo_Black_1024x231.png" class="logo">
+<div style="font-size:28px;font-weight:700;margin-top:8px;">
+Customer Feedback
 </div>
-
-<!-- NPS -->
-<div class="question">
-<label>How likely are you to recommend our IT services? (0–10)</label>
-
-<div id="nps-options">
-  <label><input type="radio" name="nps" value="0" style="display:none">0</label>
-  <label><input type="radio" name="nps" value="1" style="display:none">1</label>
-  <label><input type="radio" name="nps" value="2" style="display:none">2</label>
-  <label><input type="radio" name="nps" value="3" style="display:none">3</label>
-  <label><input type="radio" name="nps" value="4" style="display:none">4</label>
-  <label><input type="radio" name="nps" value="5" style="display:none">5</label>
-  <label><input type="radio" name="nps" value="6" style="display:none">6</label>
-  <label><input type="radio" name="nps" value="7" style="display:none">7</label>
-  <label><input type="radio" name="nps" value="8" style="display:none">8</label>
-  <label><input type="radio" name="nps" value="9" style="display:none">9</label>
-  <label><input type="radio" name="nps" value="10" style="display:none">10</label>
-</div>
-
-<p style="font-size:0.9rem;margin-top:8px;">
-<b>NPS Scale:</b><br>
-0–7 = <span style="color:#d9534f;font-weight:bold;">Detractor</span> &nbsp;|&nbsp;
-8 = <span style="color:#f0ad4e;font-weight:bold;">Neutral</span> &nbsp;|&nbsp;
-9–10 = <span style="color:#28a745;font-weight:bold;">Promoter</span>
+<p style="opacity:.9;font-size:16px;margin-top:6px;">
+Net Promoter Score Survey
 </p>
 </div>
 
-<!-- Original Questions -->
-<div class="question">
-<label>How satisfied are you with the quality & reliability of our IT services?</label>
-<textarea id="q1"></textarea>
+<form class="form-content" id="surveyForm">
+
+<label class="label-title">
+How likely are you to recommend Arche services to others?
+</label>
+
+<!-- NPS Buttons -->
+<div class="nps-scale-container">
+  <div class="nps-scale" id="npsButtons"></div>
+  <div style="display:flex;justify-content:space-between;font-size:13px;color:#6b7280;margin-top:10px;">
+    <span>Not at all likely</span>
+    <span>Extremely likely</span>
+  </div>
 </div>
 
-<div class="question">
-<label>How would you rate our team's response time & issue resolution?</label>
-<textarea id="q2"></textarea>
+<input type="hidden" id="npsScore" required>
+
+<div class="input-group">
+<label>Your Name*</label>
+<input type="text" id="name" required placeholder="Enter your name">
 </div>
 
-<div class="question">
-<label>How confident are you in our technical expertise?</label>
-<textarea id="q3"></textarea>
+<div class="input-group">
+<label>Your Email*</label>
+<input type="email" id="email" required placeholder="Enter your email">
 </div>
 
-<div class="question">
-<label>How effective is our communication on updates & issues?</label>
-<textarea id="q4"></textarea>
+<div class="input-group">
+<label>Reason for your score (optional)</label>
+<textarea id="feedback" placeholder="Share your feedback..."></textarea>
 </div>
 
-<div class="question">
-<label>What do we do well, and where should we improve?</label>
-<textarea id="q5"></textarea>
+<button id="submitBtn" disabled>Submit</button>
+
+</form>
+
+<div class="footer">
+Your feedback helps us improve — Thank you!
 </div>
 
-<button onclick="submitForm()">Submit Feedback</button>
 </div>
 
 <script>
-// highlight NPS selection
-const labels = document.querySelectorAll('#nps-options label');
-labels.forEach(label => {
-  label.onclick = () => {
-    labels.forEach(l => l.classList.remove('selected'));
-    label.classList.add('selected');
-    label.querySelector("input").checked = true;
+// Build NPS Buttons 0-10
+const npsContainer = document.getElementById("npsButtons");
+const npsScoreInput = document.getElementById("npsScore");
+const submitBtn = document.getElementById("submitBtn");
+
+for(let i=0;i<=10;i++){
+  const btn=document.createElement("div");
+  btn.className="nps-btn";
+  btn.textContent=i;
+  btn.dataset.value=i;
+  npsContainer.appendChild(btn);
+
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".nps-btn").forEach(b=>b.classList.remove("selected"));
+    btn.classList.add("selected");
+    npsScoreInput.value=i;
+    submitBtn.disabled=false;
+  });
+}
+
+// Submit Handler
+document.getElementById("surveyForm").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const data = {
+    name:document.getElementById("name").value,
+    email:document.getElementById("email").value,
+    nps:npsScoreInput.value,
+    feedback:document.getElementById("feedback").value,
   };
+
+  if(!data.name||!data.email||!data.nps){
+    alert("Please fill all required fields.");
+    return;
+  }
+
+  // ✅ send to Google sheet
+fetch("https://script.google.com/macros/s/AKfycbx9mCmvXSRrtwyV98VUAvF2TB_5DqJfvCNV4LHGR1_YnS2oc5TZjYB0GIbq9XrObLOokw/exec",{
+    method:"POST",
+    mode:"no-cors",
+    body:JSON.stringify(data)
+  });
+
+  alert("✅ Thank you! Your response has been submitted.");
+  this.reset();
+  document.querySelectorAll(".nps-btn").forEach(b=>b.classList.remove("selected"));
+  submitBtn.disabled=true;
 });
-
-function submitForm() {
-let data = {
-  name: document.getElementById("name").value,
-  email: document.getElementById("email").value,
-  nps: document.querySelector('input[name="nps"]:checked')?.value,
-  q1: document.getElementById("q1").value,
-  q2: document.getElementById("q2").value,
-  q3: document.getElementById("q3").value,
-  q4: document.getElementById("q4").value,
-  q5: document.getElementById("q5").value
-};
-
-if (!data.name || !data.email || !data.nps) {
-  alert("⚠️ Please fill your name, email, and select a rating.");
-  return;
-}
-
-// ✅ SEND TO GOOGLE SHEETS
-fetch("https://script.google.com/macros/s/AKfycbx9mCmvXSRrtwyV98VUAvF2TB_5DqJfvCNV4LHGR1_YnS2oc5TZjYB0GIbq9XrObLOokw/exec", {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify(data)
-});
-
-alert("✅ Thank you! Your response has been submitted.");
-}
 </script>
+
 </body>
 </html>
