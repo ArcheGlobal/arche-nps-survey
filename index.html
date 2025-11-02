@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f5f5;
             padding: 20px;
             line-height: 1.6;
             min-height: 100vh;
@@ -28,7 +28,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 24px;
-            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             animation: fadeIn 0.6s ease-in-out;
         }
@@ -39,7 +39,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             padding: 55px 40px;
             text-align: center;
             position: relative;
@@ -53,7 +53,7 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
             animation: float 20s infinite ease-in-out;
         }
 
@@ -74,7 +74,7 @@
 
         .form-content {
             padding: 60px 50px;
-            background: linear-gradient(to bottom, #ffffff 0%, #fafbfc 100%);
+            background: white;
         }
 
         .intro-section {
@@ -82,13 +82,24 @@
             margin-bottom: 50px;
         }
 
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
         .intro-title {
             font-size: 32px;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
             margin-bottom: 15px;
             line-height: 1.2;
         }
@@ -116,53 +127,55 @@
         }
 
         .nps-scale-wrapper {
-            background: linear-gradient(135deg, #f0f4ff 0%, #fef3f5 100%);
+            background: #f9fafb;
             padding: 40px 35px;
             border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             margin: 35px 0;
-            border: 2px solid rgba(102, 126, 234, 0.1);
+            border: 2px solid #e5e7eb;
         }
 
         .nps-scale {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 25px;
-            flex-wrap: wrap;
+            overflow-x: auto;
         }
 
         .nps-button {
-            width: 58px;
-            height: 58px;
-            border: 3px solid #e0e7ff;
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            border: 3px solid #e5e7eb;
             background: white;
             border-radius: 16px;
             cursor: pointer;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 700;
-            color: #667eea;
+            color: #1a1a1a;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            flex-shrink: 0;
         }
 
         .nps-button:hover {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #f0f4ff 0%, #fef3f5 100%);
+            border-color: #1a1a1a;
+            background: #f9fafb;
             transform: translateY(-4px) scale(1.06);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
 
         .nps-button.selected {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
-            border-color: #667eea;
+            border-color: #1a1a1a;
             transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.45);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
         .nps-button.selected::after {
@@ -170,7 +183,7 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            background: #1a1a1a;
             color: white;
             width: 24px;
             height: 24px;
@@ -180,7 +193,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             animation: checkPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
@@ -208,13 +221,13 @@
         .nps-label-score {
             font-size: 28px;
             font-weight: 900;
-            color: #667eea;
+            color: #1a1a1a;
         }
 
         .nps-label-text {
             font-size: 14px;
             font-weight: 700;
-            color: #667eea;
+            color: #4b5563;
             text-align: center;
             line-height: 1.3;
         }
@@ -235,7 +248,7 @@
         .arrow-line {
             height: 3px;
             flex: 1;
-            background: linear-gradient(to right, #ef4444 0%, #667eea 50%, #10b981 100%);
+            background: linear-gradient(to right, #6b7280 0%, #1a1a1a 50%, #1a1a1a 100%);
             border-radius: 2px;
             position: relative;
         }
@@ -251,10 +264,10 @@
         .feedback-section {
             margin-top: 50px;
             padding: 40px;
-            background: linear-gradient(135deg, #f0f4ff 0%, #fef3f5 100%);
+            background: #f9fafb;
             border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
-            border: 2px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e5e7eb;
         }
 
         .feedback-header {
@@ -271,10 +284,7 @@
         .feedback-label {
             font-size: 19px;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
         }
 
         .feedback-description {
@@ -288,7 +298,7 @@
             width: 100%;
             min-height: 120px;
             padding: 20px;
-            border: 3px solid #e0e7ff;
+            border: 3px solid #e5e7eb;
             border-radius: 16px;
             font-size: 16px;
             font-family: inherit;
@@ -300,9 +310,9 @@
 
         .text-area:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #1a1a1a;
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
         }
 
         .text-area::placeholder {
@@ -312,7 +322,7 @@
         .submit-button {
             width: 100%;
             padding: 22px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
             border: none;
             border-radius: 16px;
@@ -334,7 +344,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.6s;
         }
 
@@ -344,7 +354,8 @@
 
         .submit-button:hover:not(:disabled) {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.45);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            background: #2d2d2d;
         }
 
         .submit-button:active:not(:disabled) {
@@ -352,7 +363,7 @@
         }
 
         .submit-button:disabled {
-            background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+            background: #d1d5db;
             cursor: not-allowed;
             transform: none;
         }
@@ -360,8 +371,8 @@
         .footer {
             text-align: center;
             padding: 40px;
-            background: linear-gradient(135deg, #f0f4ff 0%, #fef3f5 100%);
-            border-top: 2px solid rgba(102, 126, 234, 0.1);
+            background: #f9fafb;
+            border-top: 2px solid #e5e7eb;
         }
 
         .footer-text {
@@ -372,24 +383,7 @@
 
         .footer-bold {
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .time-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            margin: 25px auto 0;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+            color: #1a1a1a;
         }
 
         @media (max-width: 768px) {
@@ -398,13 +392,14 @@
             }
 
             .nps-button {
-                width: 48px;
-                height: 48px;
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
                 font-size: 16px;
             }
 
             .nps-scale {
-                gap: 6px;
+                gap: 5px;
             }
 
             .intro-title {
@@ -454,13 +449,16 @@
 
         <form class="form-content" id="npsForm">
             <div class="intro-section">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <div class="time-badge">⏱️ Takes only 15 seconds</div>
+                </div>
                 <h1 class="intro-title">Your Opinion Matters</h1>
-                <p class="intro-subtitle">Help us serve you better by sharing your honest feedback. It takes just 15 seconds.</p>
+                <p class="intro-subtitle">Help us serve you better by sharing your honest feedback.</p>
             </div>
 
             <div class="question-section">
                 <label class="question-label">
-                    How likely are you to recommend our IT services to a colleague or business associate?
+                    How likely are you to recommend Arche to other customers or departments within your organization?
                 </label>
                 
                 <div class="nps-scale-wrapper">
@@ -520,10 +518,6 @@
             </div>
 
             <button type="submit" class="submit-button" id="submitBtn" disabled>Submit Feedback</button>
-
-            <div style="text-align: center;">
-                <div class="time-badge">⏱️ Takes only 15 seconds</div>
-            </div>
         </form>
 
         <div class="footer">
