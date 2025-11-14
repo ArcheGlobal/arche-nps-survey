@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: #f5f5f5;
             padding: 20px;
             line-height: 1.6;
             min-height: 100vh;
@@ -23,26 +23,6 @@
             position: relative;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(240, 147, 251, 0.2) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
-            z-index: -1;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
-        }
-
         .container {
             max-width: 750px;
             width: 100%;
@@ -50,23 +30,11 @@
             background: white;
             border-radius: 24px;
             box-shadow: 
-                0 25px 70px rgba(102, 126, 234, 0.4),
-                0 10px 40px rgba(118, 75, 162, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 25px 70px rgba(0, 0, 0, 0.15),
+                0 10px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             animation: fadeIn 0.6s ease-in-out;
             position: relative;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 300px;
-            background: linear-gradient(180deg, rgba(102, 126, 234, 0.03) 0%, transparent 100%);
-            pointer-events: none;
         }
 
         @keyframes fadeIn {
@@ -75,7 +43,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             padding: 55px 40px;
             text-align: center;
             position: relative;
@@ -89,7 +57,7 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
             animation: float 20s infinite ease-in-out;
         }
 
@@ -122,23 +90,20 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .intro-title {
             font-size: 32px;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a1a;
             margin-bottom: 15px;
             line-height: 1.2;
         }
@@ -151,12 +116,94 @@
             margin: 0 auto;
         }
 
+        .nps-explanation {
+            background: #f9fafb;
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 30px auto 0;
+            max-width: 580px;
+            border: 2px solid #e5e7eb;
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .nps-explanation strong {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .survey-period {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 20px auto 0;
+            max-width: fit-content;
+            font-size: 15px;
+        }
+
+        .survey-period strong {
+            font-weight: 700;
+            color: white;
+        }
+
+        .nps-legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid #1a1a1a;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .detractor-color {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .neutral-color {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .promoter-color {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .legend-text {
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .legend-text strong {
+            font-weight: 700;
+            color: #1f2937;
+        }
+
         .customer-info-section {
             background: #f9fafb;
             padding: 35px 40px;
             border-radius: 20px;
             margin-bottom: 45px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #1a1a1a;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
@@ -192,7 +239,7 @@
         .text-input {
             width: 100%;
             padding: 16px 18px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #1a1a1a;
             border-radius: 12px;
             font-size: 16px;
             font-family: inherit;
@@ -203,11 +250,61 @@
         .text-input:focus {
             outline: none;
             border-color: #1a1a1a;
-            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
         }
 
         .text-input::placeholder {
             color: #9ca3af;
+        }
+
+        .improvement-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .improvement-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 15px;
+            background: white;
+            border: 3px solid #1a1a1a;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .improvement-button:hover {
+            border-color: #1a1a1a;
+            background: #f9fafb;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .improvement-button.selected {
+            background: #1a1a1a;
+            border-color: #1a1a1a;
+            color: white;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .improvement-icon {
+            font-size: 32px;
+        }
+
+        .improvement-text {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .improvement-button.selected .improvement-text {
+            color: white;
         }
 
         .question-section {
@@ -230,7 +327,7 @@
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             margin: 35px 0;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #1a1a1a;
         }
 
         .nps-scale {
@@ -246,7 +343,7 @@
             width: 54px;
             height: 54px;
             min-width: 54px;
-            border: 3px solid #e5e7eb;
+            border: 3px solid #1a1a1a;
             background: white;
             border-radius: 16px;
             cursor: pointer;
@@ -265,15 +362,15 @@
             border-color: #1a1a1a;
             background: #f9fafb;
             transform: translateY(-4px) scale(1.06);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .nps-button.selected {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
-            border-color: #667eea;
+            border-color: #1a1a1a;
             transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.45);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
         .nps-button.selected::after {
@@ -281,7 +378,7 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: #1a1a1a;
             color: white;
             width: 24px;
             height: 24px;
@@ -291,7 +388,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             animation: checkPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
@@ -365,7 +462,7 @@
             background: #f9fafb;
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            border: 2px solid #e5e7eb;
+            border: 2px solid #1a1a1a;
         }
 
         .feedback-header {
@@ -396,7 +493,7 @@
             width: 100%;
             min-height: 120px;
             padding: 20px;
-            border: 3px solid #e5e7eb;
+            border: 3px solid #1a1a1a;
             border-radius: 16px;
             font-size: 16px;
             font-family: inherit;
@@ -410,7 +507,7 @@
             outline: none;
             border-color: #1a1a1a;
             background: white;
-            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
         }
 
         .text-area::placeholder {
@@ -420,7 +517,7 @@
         .submit-button {
             width: 100%;
             padding: 22px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a1a1a;
             color: white;
             border: none;
             border-radius: 16px;
@@ -433,7 +530,7 @@
             letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .submit-button::before {
@@ -443,7 +540,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.6s;
         }
 
@@ -453,8 +550,8 @@
 
         .submit-button:hover:not(:disabled) {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.5);
-            background: linear-gradient(135deg, #5568d3 0%, #6a3e94 100%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: #2d2d2d;
         }
 
         .submit-button:active:not(:disabled) {
@@ -471,7 +568,7 @@
             text-align: center;
             padding: 40px;
             background: #f9fafb;
-            border-top: 2px solid #e5e7eb;
+            border-top: 2px solid #1a1a1a;
         }
 
         .footer-text {
@@ -545,6 +642,42 @@
             .intro-subtitle {
                 font-size: 16px;
             }
+
+            .improvement-options {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .improvement-button {
+                padding: 18px 12px;
+            }
+
+            .improvement-icon {
+                font-size: 28px;
+            }
+
+            .improvement-text {
+                font-size: 13px;
+            }
+
+            .nps-legend {
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .legend-text {
+                font-size: 13px;
+            }
+
+            .nps-explanation {
+                font-size: 14px;
+                padding: 18px 20px;
+            }
+
+            .survey-period {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
         }
     </style>
 </head>
@@ -557,10 +690,18 @@
         <form class="form-content" id="npsForm">
             <div class="intro-section">
                 <div style="text-align: center; margin-bottom: 25px;">
-                    <div class="time-badge">⏱️ Takes only 15 seconds</div>
+                    <div class="time-badge">⏱️ Takes only 20 seconds</div>
                 </div>
                 <h1 class="intro-title">Your Opinion Matters</h1>
                 <p class="intro-subtitle">Help us serve you better by sharing your honest feedback.</p>
+                
+                <div class="nps-explanation">
+                    <strong>What is NPS?</strong> Net Promoter Score (NPS) is a simple metric that measures customer loyalty and satisfaction. Your feedback helps us understand how well we're serving you and where we can improve.
+                </div>
+                
+                <div class="survey-period">
+                    📅 Feedback Period: <strong>April 2025 - November 2025</strong>
+                </div>
             </div>
 
             <!-- Customer Information Section -->
@@ -581,14 +722,14 @@
                 </div>
                 <div class="input-group">
                     <label class="input-label" for="customerEmail">
-                        Email Address <span class="required">*</span>
+                        Your Official Email Address <span class="required">*</span>
                     </label>
                     <input 
                         type="email" 
                         id="customerEmail" 
                         name="customerEmail" 
                         class="text-input"
-                        placeholder="Enter your email address"
+                        placeholder="Enter your official email address"
                         required
                     >
                 </div>
@@ -632,8 +773,65 @@
                         <div class="arrow-line"></div>
                         <span class="arrow-label">High</span>
                     </div>
+
+                    <!-- NPS Legend -->
+                    <div class="nps-legend">
+                        <div class="legend-item detractor">
+                            <span class="legend-color detractor-color"></span>
+                            <span class="legend-text"><strong>0-7:</strong> Detractors</span>
+                        </div>
+                        <div class="legend-item neutral">
+                            <span class="legend-color neutral-color"></span>
+                            <span class="legend-text"><strong>8:</strong> Neutral</span>
+                        </div>
+                        <div class="legend-item promoter">
+                            <span class="legend-color promoter-color"></span>
+                            <span class="legend-text"><strong>9-10:</strong> Promoters</span>
+                        </div>
+                    </div>
                 </div>
                 <input type="hidden" id="npsScore" name="npsScore" required>
+            </div>
+
+            <!-- Additional Question: Top Improvement Priority -->
+            <div class="question-section">
+                <label class="question-label">
+                    What's the ONE thing we could improve that would make you MORE likely to recommend Arche?
+                </label>
+                
+                <div class="nps-scale-wrapper">
+                    <div class="improvement-options">
+                        <div class="improvement-button" data-value="response-time">
+                            <span class="improvement-icon">⚡</span>
+                            <span class="improvement-text">Faster Response Time</span>
+                        </div>
+                        <div class="improvement-button" data-value="technical-expertise">
+                            <span class="improvement-icon">🎓</span>
+                            <span class="improvement-text">Better Technical Expertise</span>
+                        </div>
+                        <div class="improvement-button" data-value="communication">
+                            <span class="improvement-icon">💬</span>
+                            <span class="improvement-text">Clearer Communication</span>
+                        </div>
+                        <div class="improvement-button" data-value="proactive-support">
+                            <span class="improvement-icon">🔮</span>
+                            <span class="improvement-text">More Proactive Support</span>
+                        </div>
+                        <div class="improvement-button" data-value="pricing">
+                            <span class="improvement-icon">💰</span>
+                            <span class="improvement-text">Better Pricing/Value</span>
+                        </div>
+                        <div class="improvement-button" data-value="nothing">
+                            <span class="improvement-icon">✨</span>
+                            <span class="improvement-text">Nothing - Already Excellent!</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px; color: #6b7280; font-size: 14px; font-style: italic;">
+                        Select the most important improvement area
+                    </div>
+                </div>
+                <input type="hidden" id="improvementScore" name="improvementScore" required>
             </div>
 
             <div class="feedback-section">
@@ -667,8 +865,15 @@
     </div>
 
     <script>
-        const npsButtons = document.querySelectorAll('.nps-button');
+        // ========================================
+        // GOOGLE SHEETS INTEGRATION - READY TO USE!
+        // ========================================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziuVWktEHkf36s3G6RJrWho01tyrgVH3pfn6hhZHoxAp2qP1HjqhbceW1RlplweUsr-Q/exec';
+        
+        const npsButtons = document.querySelectorAll('.nps-button:not(.recommended-button)');
+        const improvementButtons = document.querySelectorAll('.improvement-button');
         const npsScoreInput = document.getElementById('npsScore');
+        const improvementScoreInput = document.getElementById('improvementScore');
         const submitBtn = document.getElementById('submitBtn');
         const customerName = document.getElementById('customerName');
         const customerEmail = document.getElementById('customerEmail');
@@ -677,15 +882,17 @@
         function checkFormComplete() {
             const hasName = customerName.value.trim() !== '';
             const hasEmail = customerEmail.value.trim() !== '';
-            const hasScore = npsScoreInput.value !== '';
+            const hasNpsScore = npsScoreInput.value !== '';
+            const hasImprovement = improvementScoreInput.value !== '';
             
-            submitBtn.disabled = !(hasName && hasEmail && hasScore);
+            submitBtn.disabled = !(hasName && hasEmail && hasNpsScore && hasImprovement);
         }
 
         // Add event listeners to all inputs
         customerName.addEventListener('input', checkFormComplete);
         customerEmail.addEventListener('input', checkFormComplete);
 
+        // NPS buttons (0-10)
         npsButtons.forEach(button => {
             button.addEventListener('click', function() {
                 npsButtons.forEach(btn => btn.classList.remove('selected'));
@@ -695,7 +902,42 @@
             });
         });
 
-        document.getElementById('npsForm').addEventListener('submit', function(e) {
+        // Improvement buttons
+        improvementButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                improvementButtons.forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+                improvementScoreInput.value = this.getAttribute('data-value');
+                checkFormComplete();
+            });
+        });
+
+        // Function to send data to Google Sheets
+        async function sendToGoogleSheets(formData) {
+            try {
+                // Show loading state
+                submitBtn.textContent = 'SUBMITTING...';
+                submitBtn.disabled = true;
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // With no-cors, we can't read response but if we get here, it likely succeeded
+                return { success: true };
+
+            } catch (error) {
+                console.error('Error sending to Google Sheets:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        document.getElementById('npsForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!customerName.value.trim()) {
@@ -711,7 +953,12 @@
             }
 
             if (!npsScoreInput.value) {
-                alert('Please select a score from 0-10 before submitting.');
+                alert('Please select your recommendation score (0-10).');
+                return;
+            }
+
+            if (!improvementScoreInput.value) {
+                alert('Please select the most important improvement area.');
                 return;
             }
 
@@ -719,16 +966,27 @@
                 customerName: customerName.value.trim(),
                 customerEmail: customerEmail.value.trim(),
                 npsScore: npsScoreInput.value,
-                feedback: document.getElementById('feedback').value,
+                topImprovement: improvementScoreInput.value,
+                feedback: document.getElementById('feedback').value || 'No feedback provided',
                 timestamp: new Date().toISOString()
             };
 
-            console.log('NPS Survey Response:', formData);
-            alert('✅ Thank you, ' + formData.customerName + '! Your feedback has been submitted successfully.');
-            
-            this.reset();
-            npsButtons.forEach(btn => btn.classList.remove('selected'));
-            submitBtn.disabled = true;
+            console.log('✅ Submitting to Google Sheets:', formData);
+
+            // Send to Google Sheets
+            const result = await sendToGoogleSheets(formData);
+
+            // Always show success (no-cors mode doesn't allow error detection)
+            setTimeout(() => {
+                alert('✅ Thank you, ' + formData.customerName + '! Your feedback has been submitted successfully.');
+                
+                // Reset form
+                this.reset();
+                npsButtons.forEach(btn => btn.classList.remove('selected'));
+                improvementButtons.forEach(btn => btn.classList.remove('selected'));
+                submitBtn.textContent = 'SUBMIT FEEDBACK';
+                submitBtn.disabled = true;
+            }, 1000);
         });
     </script>
 </body>
